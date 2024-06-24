@@ -2,8 +2,8 @@ import { Icon } from "@iconify/react";
 
 const Header = () => {
   return (
-    <div className="sticky right-0 left-0 h-64 flex justify-center items-center before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-teal-400 before:clip-path-header self-stretch">
-      <h1 className="font-roboto-slab text-zinc-50 text-5xl -mt-10 font-bold flex justify-center items-center gap-4">
+    <div className="before:clip-path-header sticky left-0 right-0 flex h-64 items-center justify-center self-stretch before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:bg-teal-400 before:content-['']">
+      <h1 className="-mt-10 flex items-center justify-center gap-4 font-roboto-slab text-4xl font-bold text-zinc-50 sm:text-5xl">
         <Icon icon="pepicons-pop:cv-circle-filled" />
         CV Builder
       </h1>

@@ -1,7 +1,7 @@
 const Form = (props: FormProps) => {
   const { title, children } = props;
   return (
-    <form className="-mt-16 w-full max-w-form rounded-sm bg-zinc-50 p-8 shadow-form flex flex-col">
+    <form className="flex w-full flex-col rounded-sm bg-zinc-50 p-8 shadow-form">
       <h2 className="font-roboto text-xl font-semibold text-zinc-600">
         {title}
       </h2>

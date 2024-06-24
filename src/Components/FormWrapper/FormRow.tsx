@@ -1,6 +1,10 @@
 const FormRow = (props: FormRowProps) => {
   const { children } = props;
-  return <div className="flex gap-8 mb-6 last:mb-0">{children}</div>;
+  return (
+    <div className="mb-6 flex flex-col gap-4 last:mb-0 sm:flex-row">
+      {children}
+    </div>
+  );
 };
 
 interface FormRowProps {
