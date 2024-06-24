@@ -20,65 +20,58 @@ const PersonalDetails = (props: PersonalDetailsProps) => {
         <InputField
           type="text"
           placeHolder="John"
-          labelText="First Name"
+          label="First Name"
           value={firstName}
-          onChange={onFieldChange}
-          name="firstName"
+          onChange={value => onFieldChange("firstName", value)}
         />
         <InputField
           type="text"
           placeHolder="Smith"
-          labelText="Last Name"
+          label="Last Name"
           value={lastName}
-          onChange={onFieldChange}
-          name="lastName"
+          onChange={value => onFieldChange("lastName", value)}
         />
       </FormRow>
       <FormRow>
         <InputField
           type="email"
           placeHolder="JohnSmith@outlook.com"
-          labelText="Email Address"
+          label="Email Address"
           value={emailAddress}
-          onChange={onFieldChange}
-          name="emailAddress"
+          onChange={value => onFieldChange("emailAddress", value)}
         />
       </FormRow>
       <FormRow>
         <InputField
           type="tel"
           placeHolder="+(123) 456 7890"
-          labelText="Phone Number"
+          label="Phone Number"
           value={phoneNumber}
-          onChange={onFieldChange}
-          name="phoneNumber"
+          onChange={value => onFieldChange("phoneNumber", value)}
         />
       </FormRow>
       <FormRow>
         <InputField
           type="text"
           placeHolder="Phoenix"
-          labelText="City"
+          label="City"
           value={city}
-          onChange={onFieldChange}
-          name="city"
+          onChange={value => onFieldChange("city", value)}
         />
         <InputField
           type="text"
           placeHolder="AZ"
-          labelText="State"
+          label="State"
           value={state}
-          onChange={onFieldChange}
-          name="state"
+          onChange={value => onFieldChange("state", value)}
         />
       </FormRow>
       <FormRow>
         <InputArea
           value={summary}
-          label="Sumamry"
-          onChange={onFieldChange}
-          placeHolder="I am just better"
-          name="summary"
+          label="Summary"
+          onChange={value => onFieldChange("summary", value)}
+          placeHolder="A brief summary of your well-being"
         ></InputArea>
       </FormRow>
     </Form>
@@ -87,9 +80,7 @@ const PersonalDetails = (props: PersonalDetailsProps) => {
 
 interface PersonalDetailsProps {
   personalDetails: PersonalDetailsType;
-  onFieldChange: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  onFieldChange: (key: keyof PersonalDetailsType, value: string) => void;
 }
 
 export default PersonalDetails;

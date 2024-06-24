@@ -5,17 +5,14 @@ import { PersonalDetailsType, DefaultValues } from "./types";
 
 const App = () => {
   const [personalDetails, setPersonalDetails] = useState(
-    {} as DefaultValues<PersonalDetailsType>,
+    {} as DefaultValues<PersonalDetailsType>
   );
 
   const handlePersonChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: keyof PersonalDetailsType,
+    value: string
   ) => {
-    // INFO: I hate this too
-    // TODO: Refactor the shit out of it
-    const { name, value } = event.target;
-
-    setPersonalDetails({ ...personalDetails, [name]: value });
+    setPersonalDetails({ ...personalDetails, [key]: value });
   };
 
   return (

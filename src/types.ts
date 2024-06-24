@@ -6,6 +6,7 @@ export interface PersonalDetailsType {
   city: string;
   state: string;
   summary: string;
+  proflePicture: string;
 }
 
 /* I wonder if this has the protential to break typescript lsp */
