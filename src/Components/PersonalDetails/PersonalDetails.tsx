@@ -1,6 +1,7 @@
-import { PersonalDetailsType } from "src/types";
+import { PersonalDetailsKey, PersonalDetailsType } from "src/types";
 import { Form, FormRow } from "src/Components/FormWrapper";
-import { InputField, InputArea } from "src/Components/InputField";
+import { Input, TextArea } from "src/Components/InputField";
+import CheckBox from "../InputField/Checkbox";
 
 const PersonalDetails = (props: PersonalDetailsProps) => {
   const { personalDetails, onFieldChange } = props;
@@ -17,62 +18,65 @@ const PersonalDetails = (props: PersonalDetailsProps) => {
   return (
     <Form title="Personal Details">
       <FormRow>
-        <InputField
+        <Input
           type="text"
           placeHolder="John"
           label="First Name"
           value={firstName}
-          onChange={value => onFieldChange("firstName", value)}
+          onChange={(value) => onFieldChange("firstName", value)}
         />
-        <InputField
+        <Input
           type="text"
           placeHolder="Smith"
           label="Last Name"
           value={lastName}
-          onChange={value => onFieldChange("lastName", value)}
+          onChange={(value) => onFieldChange("lastName", value)}
         />
       </FormRow>
       <FormRow>
-        <InputField
+        <Input
           type="email"
           placeHolder="JohnSmith@outlook.com"
           label="Email Address"
           value={emailAddress}
-          onChange={value => onFieldChange("emailAddress", value)}
+          onChange={(value) => onFieldChange("emailAddress", value)}
         />
       </FormRow>
       <FormRow>
-        <InputField
+        <Input
           type="tel"
           placeHolder="+(123) 456 7890"
           label="Phone Number"
           value={phoneNumber}
-          onChange={value => onFieldChange("phoneNumber", value)}
+          onChange={(value) => onFieldChange("phoneNumber", value)}
         />
       </FormRow>
       <FormRow>
-        <InputField
+        <Input
           type="text"
           placeHolder="Phoenix"
           label="City"
           value={city}
-          onChange={value => onFieldChange("city", value)}
+          onChange={(value) => onFieldChange("city", value)}
         />
-        <InputField
+        <Input
           type="text"
           placeHolder="AZ"
           label="State"
           value={state}
-          onChange={value => onFieldChange("state", value)}
+          onChange={(value) => onFieldChange("state", value)}
         />
       </FormRow>
       <FormRow>
-        <InputArea
+        <TextArea
           value={summary}
+          onChange={(value) => onFieldChange("summary", value)}
           label="Summary"
-          onChange={value => onFieldChange("summary", value)}
-          placeHolder="A brief summary of your well-being"
-        ></InputArea>
+          placeHolder="A brief summary of your wellbeing"
+        ></TextArea>
+      </FormRow>
+      <FormRow>
+        <CheckBox label="Profile Picture" desc="Profile Picture test" />
       </FormRow>
     </Form>
   );
@@ -80,7 +84,7 @@ const PersonalDetails = (props: PersonalDetailsProps) => {
 
 interface PersonalDetailsProps {
   personalDetails: PersonalDetailsType;
-  onFieldChange: (key: keyof PersonalDetailsType, value: string) => void;
+  onFieldChange: (key: PersonalDetailsKey, value: string) => void;
 }
 
 export default PersonalDetails;

@@ -1,17 +1,15 @@
 import { useState } from "react";
 import Header from "./Components/Header";
 import PersonalDetails from "./Components/PersonalDetails";
-import { PersonalDetailsType, DefaultValues } from "./types";
+import { PersonalDetailsType, PersonalDetailsKey } from "./types";
+import { createDefaultValues } from "./utils";
 
 const App = () => {
-  const [personalDetails, setPersonalDetails] = useState(
-    {} as DefaultValues<PersonalDetailsType>
-  );
+  const defaultValue = createDefaultValues<PersonalDetailsType>();
 
-  const handlePersonChange = (
-    key: keyof PersonalDetailsType,
-    value: string
-  ) => {
+  const [personalDetails, setPersonalDetails] = useState(defaultValue);
+
+  const handlePersonChange = (key: PersonalDetailsKey, value: string) => {
     setPersonalDetails({ ...personalDetails, [key]: value });
   };
 
