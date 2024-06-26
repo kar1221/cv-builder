@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const TextArea = (props: TextAreaProps) => {
+function TextArea(props: TextAreaProps) {
   const { label, placeHolder, value, onChange } = props;
 
   const ref = useRef<HTMLTextAreaElement | null>(null);
@@ -10,7 +10,7 @@ const TextArea = (props: TextAreaProps) => {
   };
 
   return (
-    <label className="flex flex-1 flex-col gap-1 text-zinc-500">
+    <label className="flex flex-1 flex-col gap-1 text-zinc-500" htmlFor={label}>
       <h4 className="text-lg text-zinc-500">{label}</h4>
       <textarea
         ref={ref}
@@ -18,10 +18,11 @@ const TextArea = (props: TextAreaProps) => {
         value={value}
         onChange={handleChange}
         placeholder={placeHolder}
-      ></textarea>
+        id={label}
+      />
     </label>
   );
-};
+}
 
 interface TextAreaProps {
   label?: string;

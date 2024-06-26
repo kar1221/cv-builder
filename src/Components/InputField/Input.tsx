@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { InputType } from "src/types";
 
-const Input = (props: InputProps) => {
+function Input(props: InputProps) {
   const { label, type, placeHolder, value, onChange } = props;
   const ref = useRef<HTMLInputElement | null>(null);
 
@@ -10,7 +10,7 @@ const Input = (props: InputProps) => {
   };
 
   return (
-    <label className="flex flex-1 flex-col gap-1 text-zinc-500">
+    <label className="flex flex-1 flex-col gap-1 text-zinc-500" htmlFor={label}>
       <h4 className="text-lg text-zinc-500">{label}</h4>
       <input
         ref={ref}
@@ -19,10 +19,11 @@ const Input = (props: InputProps) => {
         value={value}
         onChange={handleChange}
         type={type}
+        id={label}
       />
     </label>
   );
-};
+}
 
 interface InputProps {
   label: string;
