@@ -10,6 +10,9 @@ export default {
       gridTemplateRows: {
         form: "200px 1fr",
       },
+      gridTemplateColumns: {
+        resumeContent: "350px 1fr",
+      },
       letterSpacing: {
         header: ".20em",
       },

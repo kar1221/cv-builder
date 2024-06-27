@@ -1,19 +1,16 @@
-import { useState } from "react";
+import { useReducer } from "react";
+import ResumeContent from "./components/ResumeContent";
 import ResumeHeader from "./components/ResumeHeader";
+import { DetailsReducer, initialState } from "./components/utils";
 
 function App() {
-  const [fullName, setFullName] = useState<string>("John Doe");
-  const [position, setPosition] = useState("Frontend Developer");
+  const [state, dispatch] = useReducer(DetailsReducer, initialState);
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-800">
-      <form className="grid w-full max-w-4xl grid-rows-form bg-zinc-50 p-4">
-        <ResumeHeader
-          fullname={fullName}
-          position={position}
-          onNameChange={setFullName}
-          onPositionChange={setPosition}
-        />
+      <form className="grid h-max w-full max-w-4xl grid-rows-form overflow-hidden bg-zinc-50 px-8 py-4">
+        <ResumeHeader state={state} onChange={dispatch} />
+        <ResumeContent state={state} onChange={dispatch} />
       </form>
     </div>
   );
