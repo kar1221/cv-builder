@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-        "roboto-slab": ["Roboto Slab", "serif"],
+        Poppins: ["Poppins", "sans-serif"],
+        Cursive: ["Satisfy", "cursive"],
       },
-      maxWidth: {
-        form: "750px",
+      gridTemplateRows: {
+        form: "200px 1fr",
       },
-      boxShadow: {
-        form: "0 5px 15px rgba(0, 0, 0, 0.07), 0 15px 35px rgba(50, 50, 93, 0.1)",
+      letterSpacing: {
+        header: ".20em",
       },
     },
   },
