@@ -1,16 +1,29 @@
-import { useReducer } from "react";
+import { useState } from "react";
 import ResumeContent from "./components/ResumeContent";
 import ResumeHeader from "./components/ResumeHeader";
-import { DetailsReducer, initialState } from "./components/utils";
+import {
+  contactsDefault,
+  educationDefault,
+  personalInfoDefault,
+} from "./components/utils";
+import { Contacts, Education, PersonalInfo } from "./components/types";
 
 function App() {
-  const [state, dispatch] = useReducer(DetailsReducer, initialState);
+  const [personalInfo, setPersonalInfo] =
+    useState<PersonalInfo>(personalInfoDefault);
+  const [contacts, setContacts] = useState<Contacts>(contactsDefault);
+  const [education, setEducation] = useState<Education[]>(educationDefault);
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-800">
       <form className="grid h-max w-full max-w-4xl grid-rows-form overflow-hidden bg-zinc-50 px-8 py-4">
-        <ResumeHeader state={state} onChange={dispatch} />
-        <ResumeContent state={state} onChange={dispatch} />
+        <ResumeHeader value={personalInfo} onChange={setPersonalInfo} />
+        <ResumeContent
+          contacts={contacts}
+          onContactsChange={setContacts}
+          education={education}
+          onEducationChange={setEducation}
+        />
       </form>
     </div>
   );

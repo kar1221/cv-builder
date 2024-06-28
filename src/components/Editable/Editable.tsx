@@ -26,7 +26,7 @@ function Editable(props: EditableProps) {
   });
 
   const editableStyle = twMerge(
-    `relative border-b-2 trasnition-all duration-150 ease-in-out ${isHovering ? "border-zinc-500" : "border-transparent"}`,
+    `relative trasnition-all duration-150 ease-in-out ${isHovering ? "scale-105" : "scale-100"}`,
     className
   );
 
@@ -34,6 +34,7 @@ function Editable(props: EditableProps) {
     <div
       className={editableStyle}
       onMouseEnter={handleOnEnter}
+      onMouseOver={handleOnEnter}
       onMouseLeave={handleOnLeave}
       onFocus={handleOnEnter}
       onBlur={handleOnLeave}
@@ -41,11 +42,17 @@ function Editable(props: EditableProps) {
     >
       {renderedChildren}
 
-      <Icon
-        icon={isEditing ? "mdi:pencil-off" : "mdi:pencil"}
-        className={`m-2 h-6 w-6 absolute cursor-pointer text-zinc-600 top-0 right-0 transition-opacity duration-150 ease-in-out ${isHovering ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      <button
+        type="button"
+        className={`flex font-Poppins text-base text-zinc-600 gap-1 items-center absolute top-0 right-0 m-2 transition-opacity duration-150 ease-in-out ${isHovering ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         onClick={toggleIsEditing}
-      />
+      >
+        <Icon
+          icon={isEditing ? "mdi:pencil-off" : "mdi:pencil"}
+          className="h-5 w-5 cursor-pointer text-zinc-600"
+        />
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
     </div>
   );
 }

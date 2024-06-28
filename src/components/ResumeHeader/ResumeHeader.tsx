@@ -1,18 +1,21 @@
 import { Hidden, Editable, Visible } from "src/components/Editable";
-import { DetailsAction, DetailsActionKind, DetailsState } from "../types";
+import { PersonalInfo } from "../types";
 
 function ResumeHeader(props: ResumeHeaderProps) {
-  const { state, onChange } = props;
-  const { fullname, position } = state;
+  const { value, onChange } = props;
+  const { fullname, position } = value;
 
   const stylisticName = fullname
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase())
     .join("");
 
-  function handleOnChange(type: DetailsActionKind) {
+  function handleOnChange(key: keyof PersonalInfo) {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange({ type, payload: event.target.value });
+      onChange({
+        ...value,
+        [key]: event.target.value,
+      });
     };
   }
 
@@ -23,13 +26,13 @@ function ResumeHeader(props: ResumeHeaderProps) {
     >
       <Hidden>
         <input
-          className="w-3/4 border-b-2 border-zinc-500 bg-transparent text-center font-Poppins text-4xl font-bold text-zinc-700 placeholder:text-zinc-400"
+          className="w-max border-b-2 border-zinc-500 bg-transparent text-center font-Poppins text-4xl font-bold text-zinc-700 placeholder:text-zinc-400"
           type="text"
           value={fullname}
           id="fullname"
           name="fullname"
           placeholder="Your name here"
-          onChange={handleOnChange(DetailsActionKind.UPDATE_FULLNAME)}
+          onChange={handleOnChange("fullname")}
           autoComplete="on"
         />
         <input
@@ -38,8 +41,8 @@ function ResumeHeader(props: ResumeHeaderProps) {
           id="position"
           name="position"
           placeholder="Your position here"
-          onChange={handleOnChange(DetailsActionKind.UPDATE_POSITION)}
-          className="w-3/4 border-b-2 border-zinc-500 bg-transparent text-center font-Poppins text-2xl text-zinc-700 placeholder:text-zinc-400"
+          onChange={handleOnChange("position")}
+          className="w-max border-b-2 border-zinc-500 bg-transparent text-center font-Poppins text-2xl text-zinc-700 placeholder:text-zinc-400"
           autoComplete="on"
         />
       </Hidden>
@@ -59,8 +62,8 @@ function ResumeHeader(props: ResumeHeaderProps) {
 }
 
 interface ResumeHeaderProps {
-  onChange: React.Dispatch<DetailsAction>;
-  state: DetailsState;
+  onChange: (value: PersonalInfo) => void;
+  value: PersonalInfo;
 }
 
 export default ResumeHeader;

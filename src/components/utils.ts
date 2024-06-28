@@ -1,39 +1,29 @@
-import type { DetailsAction, DetailsState } from "./types";
-import { DetailsActionKind } from "./types";
+import type { PersonalInfo, Contacts, Education } from "./types";
 
-function DetailsReducer(state: DetailsState, action: DetailsAction) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case DetailsActionKind.UPDATE_FULLNAME:
-      return { ...state, fullname: payload };
-    case DetailsActionKind.UPDATE_POSITION:
-      return { ...state, position: payload };
-    case DetailsActionKind.UPDATE_CONTACTS:
-      if (!action.contactsKey) {
-        return state;
-      }
-      return {
-        ...state,
-        contacts: {
-          ...state.contacts,
-          [action.contactsKey]: payload,
-        },
-      };
-    default:
-      return state;
-  }
-}
-
-const initialState: DetailsState = {
+const personalInfoDefault: PersonalInfo = {
   fullname: "John Doe",
   position: "Frontend Developer",
-
-  contacts: {
-    phoneNumber: "123-456-7890",
-    email: "QgBp6@example.com",
-    address: "123 Main St, Anytown USA",
-  },
 };
 
-export { DetailsReducer, initialState };
+const contactsDefault: Contacts = {
+  phoneNumber: "+1 (123) 456-7890",
+  email: "aB0kx@example.com",
+  address: "123 Main St, Anytown USA",
+};
+
+const educationDefault: Education[] = [
+  {
+    courseName: "Bachelor of Science in Computer Science",
+    institution: "University of California, Berkeley",
+    date: "2010 - 2014",
+    uuid: "1",
+  },
+  {
+    courseName: "Bachelor of Science in Computer Science",
+    institution: "University of California, Berkeley",
+    date: "2010 - 2014",
+    uuid: "2",
+  },
+];
+
+export { personalInfoDefault, contactsDefault, educationDefault };
