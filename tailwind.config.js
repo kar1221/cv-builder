@@ -11,7 +11,7 @@ export default {
         form: "200px 1fr",
       },
       gridTemplateColumns: {
-        resumeContent: "350px 1fr",
+        resumeContent: "300px 1fr",
       },
       letterSpacing: {
         header: ".20em",

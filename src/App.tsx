@@ -1,30 +1,62 @@
 import { useState } from "react";
-import ResumeContent from "./components/ResumeContent";
-import ResumeHeader from "./components/ResumeHeader";
 import {
   contactsDefault,
   educationDefault,
   personalInfoDefault,
+  skillsDefault,
+  summaryDefault,
+  experienceDefault,
 } from "./components/utils";
-import { Contacts, Education, PersonalInfo } from "./components/types";
+import {
+  ContactsType,
+  EducationType,
+  PersonalInfoType,
+  SkillsType,
+  ExperienceType,
+} from "./components/types";
+import ResumeHeader from "./components/ResumeHeader";
+import Contact from "./components/Contact";
+import { Form, Content, Grid } from "./components/Form";
+import Educations from "./components/Educations";
+import Skills from "./components/Skills";
+import Summary from "./components/Summary";
+import Experience from "./components/Experience";
 
 function App() {
   const [personalInfo, setPersonalInfo] =
-    useState<PersonalInfo>(personalInfoDefault);
-  const [contacts, setContacts] = useState<Contacts>(contactsDefault);
-  const [education, setEducation] = useState<Education[]>(educationDefault);
+    useState<PersonalInfoType>(personalInfoDefault);
+  const [contacts, setContacts] = useState<ContactsType>(contactsDefault);
+  const [education, setEducation] = useState<EducationType[]>(educationDefault);
+  const [skills, setSkills] = useState<SkillsType[]>(skillsDefault);
+  const [summary, setSummary] = useState(summaryDefault);
+
+  const [experience, setExperience] =
+    useState<ExperienceType[]>(experienceDefault);
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-800">
-      <form className="grid h-max w-full max-w-4xl grid-rows-form overflow-hidden bg-zinc-50 px-8 py-4">
+      <Form>
         <ResumeHeader value={personalInfo} onChange={setPersonalInfo} />
-        <ResumeContent
-          contacts={contacts}
-          onContactsChange={setContacts}
-          education={education}
-          onEducationChange={setEducation}
-        />
-      </form>
+        <Content>
+          <Grid
+            colStart={1}
+            className="flex max-w-72 flex-col gap-16 bg-rose-100 p-8"
+          >
+            <Contact
+              phoneNumber={contacts.phoneNumber}
+              email={contacts.email}
+              address={contacts.address}
+              onChange={setContacts}
+            />
+            <Educations educationList={education} onChange={setEducation} />
+            <Skills skills={skills} onChange={setSkills} />
+          </Grid>
+          <Grid colStart={2} className="flex flex-col gap-16 p-8">
+            <Summary value={summary} onChange={setSummary} />
+            <Experience experienceList={experience} onChange={setExperience} />
+          </Grid>
+        </Content>
+      </Form>
     </div>
   );
 }

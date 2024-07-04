@@ -1,5 +1,5 @@
 import { Hidden, Editable, Visible } from "src/components/Editable";
-import { PersonalInfo } from "../types";
+import { PersonalInfoType } from "../types";
 
 function ResumeHeader(props: ResumeHeaderProps) {
   const { value, onChange } = props;
@@ -10,7 +10,7 @@ function ResumeHeader(props: ResumeHeaderProps) {
     .map((word) => word.charAt(0).toUpperCase())
     .join("");
 
-  function handleOnChange(key: keyof PersonalInfo) {
+  function handleOnChange(key: keyof PersonalInfoType) {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange({
         ...value,
@@ -23,6 +23,7 @@ function ResumeHeader(props: ResumeHeaderProps) {
     <Editable
       className="relative flex flex-col items-center justify-center gap-4"
       tabindex={0}
+      position="top-right"
     >
       <Hidden>
         <input
@@ -62,8 +63,8 @@ function ResumeHeader(props: ResumeHeaderProps) {
 }
 
 interface ResumeHeaderProps {
-  onChange: (value: PersonalInfo) => void;
-  value: PersonalInfo;
+  onChange: (value: PersonalInfoType) => void;
+  value: PersonalInfoType;
 }
 
 export default ResumeHeader;

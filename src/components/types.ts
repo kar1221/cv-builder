@@ -1,19 +1,38 @@
-interface Education {
+interface EducationType {
   courseName: string;
   institution: string;
   date: string;
   uuid: string;
 }
 
-interface Contacts {
+interface ContactsType {
   phoneNumber: string;
   email: string;
   address: string;
 }
 
-interface PersonalInfo {
+interface PersonalInfoType {
   fullname: string;
   position: string;
 }
 
-export type { Contacts, PersonalInfo, Education };
+interface SkillsType {
+  skill: string;
+  id: string;
+}
+
+interface ExperienceType {
+  id: string;
+  position: string;
+  company: string;
+  date: string;
+  description: string[];
+}
+
+export type {
+  ContactsType,
+  PersonalInfoType,
+  EducationType,
+  SkillsType,
+  ExperienceType,
+};

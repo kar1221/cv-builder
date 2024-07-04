@@ -14,7 +14,7 @@ function useHovering(initialValue: boolean) {
   const handleOnEnter = () => setIsHovering(true);
   const handleOnLeave = () => setIsHovering(false);
 
-  return { isHovering, handleOnEnter, handleOnLeave } as const;
+  return [isHovering, handleOnEnter, handleOnLeave] as const;
 }
 
 export { useEditing, useHovering };
