@@ -88,7 +88,7 @@ function Experience(props: ExperienceProps) {
         </h2>
         <AddButton onClick={() => handleAdd()} />
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col-reverse gap-6">
         {experienceList.map((experience) => (
           <Editable
             position="top-right"
